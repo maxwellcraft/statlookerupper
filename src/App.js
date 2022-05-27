@@ -1,7 +1,8 @@
 import basketball from './basketball.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import DoSomething from './QueryResults';
 
 // import ReactDOM from "react-dom";
 
@@ -10,10 +11,6 @@ function MyForm() {
 
   const handleChange = event => {
     setQueryText(event.target.value);
-  }
-
-  const handleClick = () => {
-    alert(textarea);
   }
 
   return (
@@ -25,11 +22,36 @@ function MyForm() {
         className="form-control" rows="5"
         onChange={handleChange}
         />
-      <button type="submit" className="btn btn-info" onClick={handleClick}>Submit Query</button>
     </div>
   )
 }
 
+//Button Class
+class Resulter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: false};
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <div className='container'>
+        <button type="submit" className="btn btn-info" onClick={this.handleClick}>
+          {this.state.isToggleOn ? 'Query Submitted' : 'Submit Query'}
+        </button>
+        {this.state.isToggleOn && <DoSomething/>}
+      </div>
+    )
+  }
+}
 
 function App() {
 
@@ -47,6 +69,11 @@ function App() {
         <div className="container">
           <MyForm/>
         </div>
+
+        <div className='container'>
+          <Resulter/>
+        </div>
+
       </header>
     </div>
   );
