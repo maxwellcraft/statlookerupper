@@ -1,22 +1,52 @@
-import logo from './logo.svg';
+import basketball from './basketball.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from 'react';
+
+// import ReactDOM from "react-dom";
+
+function MyForm() {
+  const [textarea, setQueryText] = useState('');
+
+  const handleChange = event => {
+    setQueryText(event.target.value);
+  }
+
+  const handleClick = () => {
+    alert(textarea);
+  }
+
+  return (
+    <div className="form-group">
+      <label htmlFor="queryText"></label>
+      <textarea 
+        id="queryText"
+        name="queryText"
+        className="form-control" rows="5"
+        onChange={handleChange}
+        />
+      <button type="submit" className="btn btn-info" onClick={handleClick}>Submit Query</button>
+    </div>
+  )
+}
+
 
 function App() {
+
   return (
+    
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="title">
+          <img src={basketball} className="App-logo" alt="logo" />
+          <p>
+            Statlookerupper
+          </p>
+        </div>
+
+        <div className="container">
+          <MyForm/>
+        </div>
       </header>
     </div>
   );

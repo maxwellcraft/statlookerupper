@@ -3,8 +3,10 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+  filter: invert(54%) sepia(60%) saturate(3381%) hue-rotate(342deg) brightness(97%) contrast(93%);
+  /* codepen https://codepen.io/sosuke/pen/Pjoqqp */
 }
 
 @media (prefers-reduced-motion: no-preference) {
