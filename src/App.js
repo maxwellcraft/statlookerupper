@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import DoSomething from './QueryResults';
 
 // import ReactDOM from "react-dom";
+// setting up a backend data model
 
 function MyForm() {
   const [textarea, setQueryText] = useState('');
